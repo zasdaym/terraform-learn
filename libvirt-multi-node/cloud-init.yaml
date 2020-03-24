@@ -1,0 +1,16 @@
+#cloud-config
+hostname: "${hostname}"
+power_state:
+  delay: now
+  mode: reboot
+  message: Reboot to apply new hostname
+  timeout: 10
+users:
+- name: zasda
+  sudo: ALL=(ALL) NOPASSWD:ALL
+  groups: users,sudo
+  home: /home/zasda
+  shell: /bin/bash
+  ssh_authorized-keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEA41UjOf800AhfaUHudkpp3zfkCqk52TwNE5p2jtgODshJRVgDZBuYKdnDWmDbOH+ftMNFcuYqvOmF0u/KaK3VJLDTBryV5IMM3C+rhIw+q9AucBw/4CCCGV76mua3jfpv053FIAEP1A2yTwJH9DyC4fG3LNMsKwvzWoCNMbSr3FE=
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQlojDeyuy0zX/tvNl9TskkBK0GQUSDO5HZrUNYkxYTCLjVq5Ks/KIQIi2It5xnTN68G9Hgg5KATJ9KHE8JPPuM6vyECAWE0Lh7Yn0pml73+8lUklJOOxGRECj6zsC56VxGeH0YfvrPAHRcY+yVsAsZyzPCYjkg4/Lj7M9J28ZCNZVInZYdw4mZ4mTox2Q+GJV1gZ32H4ALU9OsjXYG6yLolj2OtWAauyDjAJo4fdwivqasxjcSQKkCZ00FApX86fUN7rOKdXo5v/nnwWX2o2QFnNcGay12Tmcu3PQ0MZmxiirWJqT7Fo4ExZWW1tE0+5wOrzANccjAgALyMtX9KmL
