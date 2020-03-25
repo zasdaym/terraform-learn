@@ -16,7 +16,7 @@ resource "libvirt_cloudinit_disk" "cloud-init" {
   name = "cloud-init-${count.index}.iso"
   pool = libvirt_pool.vm.name
   count = var.hosts
-  user_data = templatefile("${path.module}/user-data.yaml", { hostname = "pod-${count.index + 1}" })
+  user_data = templatefile("${path.module}/cloud-init.yaml", { hostname = "pod-${count.index + 1}" })
 }
 
 resource "libvirt_volume" "ubuntu_1804" {
