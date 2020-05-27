@@ -12,7 +12,7 @@ resource "libvirt_pool" "vm" {
   path = "/home/zasda/vm/"
 }
 
-resource "libvirt_cloudinit_disk" "cloud-init" {
+resource "libvirt_cloudinit_disk" "nodes" {
   name = "cloud-init-${count.index}.iso"
   pool = libvirt_pool.vm.name
   count = var.hosts
@@ -37,7 +37,7 @@ resource "libvirt_domain" "nodes" {
   name = "node-${count.index + 1}"
   memory = "512"
   vcpu = 1
-  cloudinit = element(libvirt_cloudinit_disk.cloud-init.*.id, count.index)
+  cloudinit = element(libvirt_cloudinit_disk.nodes.*.id, count.index)
   
   network_interface {
     network_name = "default"

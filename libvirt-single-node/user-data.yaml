@@ -3,7 +3,7 @@ hostname: ${hostname}
 users:
 - name: zasda
   sudo: ALL=(ALL) NOPASSWD:ALL
-  groups: users,sudo
+  groups: sudo
   home: /home/zasda
   shell: /bin/bash
   ssh_authorized-keys:
